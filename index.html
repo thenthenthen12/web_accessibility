@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹접근성 검사</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="lib/jquery-3.7.0.min.js"></script>
+    <script>
+        window.onload = function () {
+
+
+
+            var swiper = new Swiper(".mySwiper", {
+                slidesPerView: 1,
+                spaceBetween: 30,
+                autoplay: {
+                    delay: 4000,
+                    disableOnInteraction: false,
+                },
+                loop: true,
+                pagination: {
+                    el: ".swiper-pagination",
+                    type: "fraction",
+                },
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+            });
+
+            $('.cont_01 .pause').click(function () {
+                $(this).toggleClass('on')
+            })
+            $('.cont_01 .pause img:nth-child(1)').click(function(){
+                swiper.autoplay.stop();
+            })
+            $('.cont_01 .pause img:nth-child(2)').click(function(){
+                swiper.autoplay.start();
+            })
+
+            $('.cont_04 .pause').click(function () {
+                $(this).toggleClass('on')
+            })
+            $('.cont_04 .pause img:nth-child(1)').click(function(){
+                swiper02.autoplay.stop();
+            })
+            $('.cont_04 .pause img:nth-child(2)').click(function(){
+                swiper02.autoplay.start();
+            })
+
+
+            
+            var swiper02 = new Swiper(".mySwiper02", {
+                slidesPerView: 1,
+                spaceBetween: 30,
+                autoplay: {
+                    delay: 4000,
+                    disableOnInteraction: false,
+                },
+                loop: true,
+                pagination: {
+                    el: ".swiper-pagination1",
+                    type: "fraction",
+                },
+                navigation: {
+                    nextEl: ".swiper-button-next1",
+                    prevEl: ".swiper-button-prev1",
+                },
+            });
+
+
+
+
+
+            var swiper03 = new Swiper(".mySwiper03", {
+                slidesPerView: 5,
+                spaceBetween: 30,
+                autoplay: {
+                    delay: 4000,
+                    disableOnInteraction: false,
+                },
+                loop: true,
+                navigation: {
+                    nextEl: ".swiper-button-next2",
+                    prevEl: ".swiper-button-prev2",
+                },
+            });
+
+            $('.cont_06 .pause').click(function () {
+                $(this).toggleClass('on')
+            })
+            $('.cont_06 .pause img:nth-child(1)').click(function(){
+                swiper03.autoplay.stop();
+            })
+            $('.cont_06 .pause img:nth-child(2)').click(function(){
+                swiper03.autoplay.start();
+            })
+
+
+
+
+
+
+            let lang = document.getElementsByClassName('depth_02')[0];
+            let langBtn = document.getElementsByClassName('lang_btn')[0];
+
+
+            lang.style.display = 'none'
+
+            langBtn.onclick = function () {
+
+                if (lang.style.display == 'none') {
+                    lang.style.display = 'block'
+                    langBtn.classList.add('on')
+                }
+                else {
+                    lang.style.display = 'none'
+                    langBtn.classList.remove('on')
+                }
+            }
+
+            let familySite = document.querySelector('.family');
+            let familyDepth = document.getElementsByClassName('depth_02')[2];
+
+            familyDepth.style.display = 'none'
+
+            familySite.onclick = function () {
+
+                if (familyDepth.style.display == 'none') {
+                    familySite.classList.add('on')
+                    familyDepth.style.display = 'block'
+                }
+                else {
+                    familySite.classList.remove('on')
+                    familyDepth.style.display = 'none'
+                }
+            }
+
+            let coSite = document.querySelector('.co_op');
+            let coDepth = document.getElementsByClassName('depth_02')[3];
+
+            coDepth.style.display = 'none'
+
+            coSite.onclick = function () {
+
+                if (coDepth.style.display == 'none') {
+                    coSite.classList.add('on')
+                    coDepth.style.display = 'block'
+                }
+                else {
+                    coSite.classList.remove('on')
+                    coDepth.style.display = 'none'
+                }
+            }
+
+            let menuList = document.querySelector('.menu_list');
+            let menuListBtn = menuList.querySelectorAll('h3');
+            let itemList = document.querySelector('.item_list');
+            let item = itemList.querySelectorAll('.item');
+
+            for (let i = 0; i < menuListBtn.length; i++) {
+                menuListBtn[i].onclick = function () {
+                    item.forEach(function (e) {
+                        e.classList.remove('on')
+                    })
+                    menuListBtn.forEach(function (e) {
+                        e.classList.remove('on')
+                    })
+                    item[i].classList.add('on')
+                    menuListBtn[i].classList.add('on')
+
+                }
+            }
+
+            //메인 2차메뉴
+
+            let mainMenuList = document.querySelector('.main_menu');
+            let mainMenuBtn = mainMenuList.querySelectorAll('li');
+            let mainInfoList = document.querySelector('.main_depth_02');
+            let mainInfo = mainInfoList.querySelectorAll('.info');
+
+            for (let i = 0; i < mainMenuBtn.length; i++) {
+                mainMenuBtn[i].onmouseenter = function () {
+                    mainInfo.forEach(function (e) {
+                        e.classList.remove('on')
+                    })
+                    mainInfo[i].classList.add('on')
+                }
+                mainInfo[i].onmouseleave = function () {
+                    mainInfo.forEach(function (e) {
+                        e.classList.remove('on')
+                    })
+                }
+
+            }
+
+
+
+
+
+
+
+
+
+
+            let searchBtn = document.querySelector('.search');
+            let searchBox = document.querySelector('.search_box');
+            let searchClose = document.querySelector('.close');
+
+
+            searchBtn.onclick = function () {
+                searchBox.classList.add('on')
+            }
+            searchClose.onclick = function () {
+                searchBox.classList.remove('on')
+            }
+
+
+        }
+    </script>
+</head>
+
+<body>
+    <div id="wrap">
+        <header>
+            <div class="up">
+                <div class="inner">
+                    <p>국민에게 신뢰받는 최고의 부동산 전문기관, 한국부동산원</p>
+                    <div class="link">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <img src="img/페북.png" alt="얼굴책">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="img/유튜브.png" alt="너튭">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="img/instagram.png" alt="잉별">
+                                </a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a class="lang_btn" href="#">KOR</a>
+                                <ul class="depth_02">
+                                    <li><a href="#">ENG</a></li>
+                                </ul><!-- .depth_02 end -->
+                            </li>
+                        </ul>
+                    </div><!-- .link end -->
+                </div><!-- .inner end -->
+            </div><!-- .up end -->
+            <div class="gnb">
+                <a href="#">
+                    <img src="img/logo.png" alt="메인로고">
+                </a>
+                <div>
+                    <nav>
+                        <ul class="main_menu">
+                            <li><a href="#">주요사업</a></li>
+                            <li><a href="#">알림마당</a></li>
+                            <li><a href="#">열린경영</a></li>
+                            <li><a href="#">국민소통</a></li>
+                            <li><a href="#">ESG경영</a></li>
+                            <li><a href="#">기관소개</a></li>
+                            <li><a href="#">정보공개</a></li>
+                        </ul>
+                    </nav>
+                    <div class="right_box">
+                        <div class="search">
+                            <img src="img/돋보기.png" alt="돋보기">
+                            <img src="img/돋보기흰색.png" alt="돋보기">
+                        </div><!-- .search end -->
+                        <div class="menu">
+                            <img src="img/메뉴.png" alt="메뉴버튼">
+                        </div><!-- .menu end -->
+                    </div><!-- .right_box end -->
+                </div>
+            </div><!-- .gnb end -->
+            <div class="depth_02 main_depth_02">
+                <div class="info">
+                    <div class="bg">
+                        <img src="img/reb.png" alt="배경이미지">
+                        <div class="title">
+                            <img src="img/icon01.png" alt="주요사업아이콘">
+                            <h2>주요사업</h2>
+                            <p>KOREA REAL ESTATE BOARD</p>
+                        </div><!-- .title end -->
+                    </div><!-- .bg end -->
+                    <div class="inner">
+                        <ul class="line">
+                            <li>
+                                <a class="sub_title" href="#">부동산 가격공시</a>
+                                <ul>
+                                    <li><a href="#">공동주택가격 공시전담</a></li>
+                                    <li><a href="#">단독주택가격 공시전담</a></li>
+                                    <li><a href="#">토지가격 공시총괄</a></li>
+                                </ul>
+                            </li>
+                        </ul><!-- .line end -->
+                        <ul>
+                            <li>
+                                <a href="#">부동산조사·통계</a>
+                                <ul>
+                                    <li><a href="#">전국주택가격동향조사</a></li>
+                                    <li><a href="#">단전국지가변동률조사</a></li>
+                                    <li><a href="#">상업용부동산 임대동향조사</a></li>
+                                    <li><a href="#">오피스텔가격동향조사</a></li>
+                                    <li><a href="#">공동주택 실거래가격지수</a></li>
+                                    <li><a href="#">부동산거래현황</a></li>
+                                    <li><a href="#">시세정보</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">부동산 시장관리</a>
+                                <ul>
+                                    <li><a href="#">부동산거래관리시스템</a></li>
+                                    <li><a href="#">부동산거래질서교란행위 신고센터</a></li>
+                                    <li><a href="#">중개대상물 인터넷 표시·광고 모니터링 업무</a></li>
+                                    <li><a href="#">부동산거래 전자계약시스템</a></li>
+                                    <li><a href="#">부동산거래 신고내용 조사 업무</a></li>
+                                    <li><a href="#">임대차분쟁조정위원회</a></li>
+                                    <li><a href="#">주택공급통계정보시스템</a></li>
+                                    <li><a href="#">주택통합정보시스템</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">부동산 소비자보호</a>
+                                <ul>
+                                    <li><a href="#">리츠 심사·감독지원 업무</a></li>
+                                    <li><a href="#">공동주택관리정보(K-apt)</a></li>
+                                    <li><a href="#">타당성 기초조사</a></li>
+                                    <li><a href="#">감정평가 표본조사</a></li>
+                                    <li><a href="#">보상평가서 검토</a></li>
+                                    <li><a href="#">담보평가서 검토</a></li>
+                                    <li><a href="#">사전표본 기준가격조사</a></li>
+                                    <li><a href="#">택지비평가서 검토</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">보상수탁</a>
+                                <ul>
+                                    <li><a href="#">보상수탁업무</a></li>
+                                    <li><a href="#">손실보상의 종류</a></li>
+                                    <li><a href="#">고객마당</a></li>
+                                    <li><a href="#">조직 및 연락처</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">도시정비사업</a>
+                                <ul>
+                                    <li><a href="#">소규모주택정비사업</a></li>
+                                    <li><a href="#">빈집정비사업</a></li>
+                                    <li><a href="#">공사중단 건축물 정비사업</a></li>
+                                    <li><a href="#">관리처분계획 타당성 검증</a></li>
+                                    <li><a href="#">재개발·재건축 사업성 검증</a></li>
+                                    <li><a href="#">정비사업 공사비 검증</a></li>
+                                    <li><a href="#">공공지원민간임대 연계형 정비사업</a></li>
+                                    <li><a href="#">자료실</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">녹색건축</a>
+                                <ul>
+                                    <li><a href="#">녹색건축센터 소개</a></li>
+                                    <li><a href="#">건축물 에너지·온실가스 정보체계운영</a></li>
+                                    <li><a href="#">녹색건축 인증·검토 업무</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">부동산R&D</a>
+                                <ul>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">청약업무</a>
+                                <ul>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div><!-- .inner end -->
+                </div><!-- .info end -->
+                <div class="info">
+                    <div class="bg">
+                        <img src="img/reb.png" alt="배경이미지">
+                        <div class="title">
+                            <img src="img/icon02.png" alt="알림마당아이콘">
+                            <h2>알림마당</h2>
+                            <p>KOREA REAL ESTATE BOARD</p>
+                        </div><!-- .title end -->
+                    </div><!-- .bg end -->
+                    <div class="inner">
+                        <ul>
+                            <li>
+                                <a href="#">공지사항</a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">보도자료</a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">계약정보</a>
+                                <ul>
+                                    <li><a href="#">입찰정보 사전공개</a></li>
+                                    <li><a href="#">입찰정보</a></li>
+                                    <li><a href="#">수의계약내용 공개</a></li>
+                                    <li><a href="#">계약관련 자료실</a></li>
+                                    <li><a href="#">수의계약 견적제출</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">보상정보</a>
+                                <ul>
+                                    <li><a href="#">감정평가법인등 선정 공고</a></li>
+                                    <li><a href="#">보상계획 공고</a></li>
+                                    <li><a href="#">협의 공고</a></li>
+                                    <li><a href="#">분묘개장 공고</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">직원마당</a>
+                            </li>
+                        </ul>
+                    </div><!-- .inner end -->
+                </div><!-- .info end -->
+                <div class="info">
+                    <div class="bg">
+                        <img src="img/reb.png" alt="배경이미지">
+                        <div class="title">
+                            <img src="img/icon03.png" alt="열린경영아이콘">
+                            <h2>열린경영</h2>
+                            <p>KOREA REAL ESTATE BOARD</p>
+                        </div><!-- .title end -->
+                    </div><!-- .bg end -->
+                    <div class="inner">
+                        <ul>
+                            <li>
+                                <a href="#">윤리준법경영</a>
+                                <ul>
+                                    <li><a href="#">윤리준법경영소개</a></li>
+                                    <li><a href="#">윤리준법경영시스템</a></li>
+                                    <li><a href="#">제도 및 규범</a></li>
+                                    <li><a href="#">윤리준법경영활동</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">반부패·청렴시책</a>
+                                <ul>
+                                    <li><a href="#">추진조직</a></li>
+                                    <li><a href="#">반부패·청렴 행동기준</a></li>
+                                    <li><a href="#">실천프로그램</a></li>
+                                    <li><a href="#">반부패·청렴 추진활동</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">인권경영</a>
+                                <ul>
+                                    <li><a href="#">인권경영 소개</a></li>
+                                    <li><a href="#">제도 및 규범</a></li>
+                                    <li><a href="#">인권경영활동</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">안전경영</a>
+                                <ul>
+                                    <li><a href="#">안전경영 소개</a></li>
+                                    <li><a href="#">안전보건경영시스템</a></li>
+                                    <li><a href="#">재난안전시스템</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">신고센터</a>
+                                <ul>
+                                    <li><a href="#">비윤리행위·이해충돌행위 신고</a></li>
+                                    <li><a href="#">부조리 신고</a></li>
+                                    <li><a href="#">인권침해신고</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">공정거래 자율준수 프로그램</a>
+                                <ul>
+                                    <li><a href="#">CEO 선언문</a></li>
+                                    <li><a href="#">CP 소개</a></li>
+                                    <li><a href="#">CP 자료실</a></li>
+                                    <li><a href="#">CP 신고</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">REB 동반성장</a>
+                                <ul>
+                                    <li><a href="#">CEO 메시지</a></li>
+                                    <li><a href="#">동반성장 추진전략</a></li>
+                                    <li><a href="#">조직도</a></li>
+                                    <li><a href="#">중소기업 지원제도</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div><!-- .inner end -->
+                </div><!-- .info end -->
+                <div class="info">
+                    <div class="bg">
+                        <img src="img/reb.png" alt="배경이미지">
+                        <div class="title">
+                            <img src="img/icon04.png" alt="국민소통아이콘">
+                            <h2>국민소통</h2>
+                            <p>KOREA REAL ESTATE BOARD</p>
+                        </div><!-- .title end -->
+                    </div><!-- .bg end -->
+                    <div class="inner">
+                        <ul>
+                            <li>
+                                <a href="#">고객의 소리</a>
+                                <ul>
+                                    <li><a href="#">고객의 소리</a></li>
+                                    <li><a href="#">자주묻는질문</a></li>
+                                    <li><a href="#">고객상담</a></li>
+                                    <li><a href="#">칭찬/추천</a></li>
+                                    <li><a href="#">기업성장응답센터</a></li>
+                                    <li><a href="#">안전보건소통게시판</a></li>
+                                    <li><a href="#">작업중지 요청 게시판</a></li>
+                                    <li><a href="#">규제개선 목소리</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">공공시설개방</a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">인권경영</a>
+                                <ul>
+                                    <li><a href="#">인권경영 소개</a></li>
+                                    <li><a href="#">제도 및 규범</a></li>
+                                    <li><a href="#">인권경영활동</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">시장관리 관련</a>
+                                <ul>
+                                    <li><a href="#">부동산거래질서 교란행위 신고센터</a></li>
+                                    <li><a href="#">실거래 조사 소명자료 제출</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">도시정비 관련</a>
+                                <ul>
+                                    <li><a href="#">정비사업 컨설팅</a></li>
+                                    <li><a href="#">소규모주택정비사업 통합지원센터</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">보상관련</a>
+                                <ul>
+                                    <li><a href="#">농업손실</a></li>
+                                    <li><a href="#">주거이전비</a></li>
+                                    <li><a href="#">이사비</a></li>
+                                    <li><a href="#">폐업보상</a></li>
+                                    <li><a href="#">휴업보상</a></li>
+                                    <li><a href="#">무허가영업보상</a></li>
+                                    <li><a href="#">이농·이어비보상</a></li>
+                                    <li><a href="#">축산보상</a></li>
+                                    <li><a href="#">휴직·실직보상</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">자료실</a>
+                                <ul>
+                                    <li><a href="#">발간도서 안내</a></li>
+                                    <li><a href="#">책자 정오표</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div><!-- .inner end -->
+                </div><!-- .info end -->
+                <div class="info">
+                    <div class="bg">
+                        <img src="img/reb.png" alt="배경이미지">
+                        <div class="title">
+                            <img src="img/icon05.png" alt="ESG경영아이콘">
+                            <h2>ESG경영</h2>
+                            <p>KOREA REAL ESTATE BOARD</p>
+                        </div><!-- .title end -->
+                    </div><!-- .bg end -->
+                    <div class="inner">
+                        <ul>
+                            <li>
+                                <a href="#">개요</a>
+                                <ul>
+                                    <li><a href="#">추진체계</a></li>
+                                    <li><a href="#">공동선언문</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">위원회</a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">일자리창출</a>
+                                <ul>
+                                    <li><a href="#">일자리창출 소개</a></li>
+                                    <li><a href="#">창업지원</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">지역상생</a>
+                                <ul>
+                                    <li><a href="#">지역상생 소개</a></li>
+                                    <li><a href="#">주요 지역상생활동</a></li>
+                                    <li><a href="#">사회공헌 영상</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">수상실적</a>
+                            </li>
+                        </ul>
+                    </div><!-- .inner end -->
+                </div><!-- .info end -->
+                <div class="info">
+                    <div class="bg">
+                        <img src="img/reb.png" alt="배경이미지">
+                        <div class="title">
+                            <img src="img/icon06.png" alt="기관소개아이콘">
+                            <h2>기관소개</h2>
+                            <p>KOREA REAL ESTATE BOARD</p>
+                        </div><!-- .title end -->
+                    </div><!-- .bg end -->
+                    <div class="inner">
+                        <ul>
+                            <li>
+                                <a href="#">설립목적 및 연혁</a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">미션과 비전</a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">원장실</a>
+                                <ul>
+                                    <li><a href="#">인사말</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">임원현황</a>
+                                <ul>
+                                    <li><a href="#">임원현황</a></li>
+                                    <li><a href="#">이사회</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">조직안내</a>
+                                <ul>
+                                    <li><a href="#">조직도</a></li>
+                                    <li><a href="#">부서소개</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">본지사안내</a>
+                                <ul>
+                                    <li><a href="#">본사 안내</a></li>
+                                    <li><a href="#">지사 안내</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">기관 상징(CI) 소개</a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">마스코트 소개</a>
+                            </li>
+                        </ul>
+                    </div><!-- .inner end -->
+                </div><!-- .info end -->
+                <div class="info">
+                    <div class="bg">
+                        <img src="img/reb.png" alt="배경이미지">
+                        <div class="title">
+                            <h2>기관소개</h2>
+                            <p>KOREA REAL ESTATE BOARD</p>
+                        </div><!-- .title end -->
+                    </div><!-- .bg end -->
+                    <div class="inner">
+                        <ul>
+                            <li>
+                                <a href="#">정보공개</a>
+                                <ul>
+                                    <li><a href="#">정보공개제도 안내</a></li>
+                                    <li><a href="#">정보공개청구</a></li>
+                                    <li><a href="#">정보목록공개</a></li>
+                                    <li><a href="#">관련법령 서식</a></li>
+                                    <li><a href="#">비공개세부기준</a></li>
+                                    <li><a href="#">사전정보공표</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">공공데이터개방</a>
+                                <ul>
+                                    <li><a href="#">공공데이터 개방 소개</a></li>
+                                    <li><a href="#">공공데이터 자료실</a></li>
+                                    <li><a href="#">공공데이터 설문조사</a></li>
+                                    <li><a href="#">공공데이터 품질오류 신고센터</a></li>
+                                    <li><a href="#">공공데이터 소통 창구</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">결산공고</a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">경영공시</a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">내규</a>
+                                <ul>
+                                    <li><a href="#">내규공개</a></li>
+                                    <li><a href="#">내규제개정사전예고</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">사업실명제</a>
+                                <ul>
+                                    <li><a href="#">사업실명제 개요</a></li>
+                                    <li><a href="#">선정기준 및 현황</a></li>
+                                    <li><a href="#">대상사업 리스트</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div><!-- .inner end -->
+                </div><!-- .info end -->
+            </div><!-- .depth_02 end -->
+            <div class="search_box">
+                <div class="search_main">
+                    <div>
+                        <input name="search_box" type="text" placeholder="검색어를 입력하세요">
+                        <img src="img/돋보기.png" alt="돋보기아이콘">
+                    </div>
+                    <div class="bg">
+                        <img src="img/reb.png" alt="배경이미지">
+                    </div>
+                </div>
+                <div class="close">
+                    <img src="img/취소.png" alt="검색박스닫기아이콘">
+                </div>
+            </div>
+        </header>
+        <main>
+            <section class="cont_01">
+                <div class="inner">
+                    <div class="main_visual">
+                        <div class="swiper mySwiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="img/main_visual_01.jpg" alt="정비사업컨설팅안내">
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="img/main_visual_02 (2).png" alt="전세정보확인후보증금피해예방">
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="img/main_visual_03 (2).png" alt="전세계약유의사항">
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="img/main_visual_04.png" alt="임대차분쟁조정신청">
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="img/main_visual_05.png" alt="청약HOME안내">
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="img/main_visual_06.png" alt="부동산정보앱다운로드">
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="img/main_visual_07.png" alt="부동산거래질서교란행위신고센터">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="control">
+                            <div class="swiper-button-prev">
+                                <img src="img/icons8-긴-화살표-왼쪽.png" alt="왼쪽화살표">
+                            </div>
+                            <div class="swiper-pagination">
+                            </div>
+                            <div class="swiper-button-next">
+                                <img src="img/icons8-긴-화살표-오른쪽-30.png" alt="오른쪽화살표">
+                            </div>
+                            <div class="pause">
+                                <img src="img/icons8-중지-30.png" alt="중지버튼">
+                                <img src="img/icons8-놀이-30.png" alt="재생버튼">
+                            </div>
+                        </div>
+                    </div><!-- .main_visual end -->
+                    <div class="main_news">
+                        <div class="menu_list">
+                            <h3 class="on">공지사항</h3>
+                            <h3>보도자료</h3>
+                            <h3>채용정보</h3>
+                            <a href="#">
+                                <span>더보기</span>
+                                <!-- + 버튼 -->
+                            </a>
+                        </div><!-- .list end -->
+                        <div class="item_list">
+                            <div class="item on">
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <span>기타</span>
+                                            <p>2023.6.1.기준 공동주택 가격 열람 및 이의신청 <span>2023.09.26</span></p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span>기타</span>
+                                            <p>한국부동산원 감사 초빙 공고<span>2023.09.12</span></p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span>기타</span>
+                                            <p>2023년 집주인 융자형 임대주택사업 2차공고<span>2023.09.11</span></p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span>기타</span>
+                                            <p>2023 녹색건축 숏폼 영상 공모전 연장 안내<span>2023.09.06</span></p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span>기타</span>
+                                            <p>2023 녹색건축한마당 개최<span>2023.08.24</span></p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div><!-- .item end -->
+                            <div class="item">
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <p>한국부동산원「2023년 제2차 부동산 데이터 아카데미」<span>2023.10.16</span></p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <p>'23.9월 전국주택가격동향'<span>2023.10.16</span></p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <p>2023년 3분기 오피스텔 가격동향조사 결과 발표<span>2023.10.16</span></p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <p>한국부동산원-제주알마켓, 지역 부동산 산업 발전을 위<span>2023.10.16</span></p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <p>주간아파트가격동향 (20231009기준)<span>2023.10.12</span></p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <p>자폐인 디자이너 협업, 한국부동산원 글판 새단장<span>2023.10.12</span></p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <p>한국부동산원-오아시스비지니스, 프롭테크 활성화·데a<span>2023.10.11</span></p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div><!-- .item end -->
+                            <div class="item">
+                                <a href="#">
+                                    <img src="img/recruit.png" alt="채용정보">
+                                </a>
+                            </div><!-- .item end -->
+                        </div><!-- .item_list end -->
+                    </div><!-- .main_news end -->
+                </div><!-- .inner end -->
+            </section><!-- .cont_01 end -->
+            <section class="cont_02">
+                <div class="inner">
+                    <ul class="item">
+                        <li>
+                            <a href="#">청약Home</a>
+                            <ul>
+                                <li><a href="#">청약신청</a></li>
+                                <li><a href="#">청약 당첨조회</a></li>
+                                <li><a href="#">청약 자격확인</a></li>
+                                <li><a href="#">청약 연습하기</a></li>
+                                <li><a href="#">청약 캘린더</a></li>
+                            </ul>
+                        </li>
+                    </ul><!-- .item end -->
+                    <ul class="item">
+                        <li>
+                            <a href="#">부동산 통계<span>R-ONE</span></a>
+                            <ul>
+                                <li><a href="#">전국 지가변동률</a></li>
+                                <li><a href="#">전국 주택가격동향</a></li>
+                                <li><a href="#">공동주택 실거래 가격지수</a></li>
+                                <li><a href="#">부동산 거래현황</a></li>
+                                <li><a href="#">상업용부동산 임대동향</a></li>
+                                <li><a href="#">오피스텔 가격동향</a></li>
+                            </ul>
+                        </li>
+                    </ul><!-- .item end -->
+                    <ul class="item">
+                        <li>
+                            <a href="#">부동산 가격공시<span>공시가격 알리미</span></a>
+                            <ul>
+                                <li><a href="#">공동주택 공시가격</a></li>
+                                <li><a href="#">표준지 공시지가</a></li>
+                                <li><a href="#">표준 단독주택 공시가격</a></li>
+                                <li><a href="#">개별 단독주택 공시가격</a></li>
+                                <li><a href="#">개별 공시지가</a></li>
+                            </ul>
+                        </li>
+                    </ul><!-- .item end -->
+                </div><!-- .inner end -->
+            </section><!-- .cont_02 end -->
+            <section class="cont_03">
+                <div class="inner">
+                    <div class="item">
+                        <a href="#">
+                            <img src="img/icon01 (1).png" alt="부동산테크아이콘">
+                            <span>부동산테크</span>
+                        </a>
+                    </div><!-- .item end -->
+                    <div class="item">
+                        <a href="#">
+                            <img src="img/icon02 (1).png" alt="임대차분쟁조정위원회아이콘">
+                            <span>임대차분쟁조정위원회</span>
+                        </a>
+                    </div><!-- .item end -->
+                    <div class="item">
+                        <a href="#">
+                            <img src="img/icon03 (1).png" alt="공동주택관리정보시스템아이콘">
+                            <p>
+                                <span>K-apt</span>
+                                <span>공동주택 관리정보시스템</span>
+                            </p>
+                        </a>
+                    </div><!-- .item end -->
+                    <div class="item">
+                        <a href="#">
+                            <img src="img/icon04 (1).png" alt="부동산거래전자계약시스템아이콘">
+                            <span>부동산거래 전자계약시스템</span>
+                        </a>
+                    </div><!-- .item end -->
+                    <div class="item">
+                        <a href="#">
+                            <img src="img/icon05 (1).png" alt="리츠정보시스템아이콘">
+                            <p>
+                                <span>리츠정보시스템</span>
+                                <span>리츠신고상담센터</span>
+                            </p>
+                        </a>
+                    </div><!-- .item end -->
+                    <div class="item">
+                        <a href="#">
+                            <img src="img/icon06 (1).png" alt="보상사업아이콘">
+                            <span>보상사업</span>
+                        </a>
+                    </div><!-- .item end -->
+                    <div class="item">
+                        <a href="#">
+                            <img src="img/icon07.png" alt="녹색건축아이콘">
+                            <span>녹색건축</span>
+                        </a>
+                    </div><!-- .item end -->
+                    <div class="item">
+                        <a href="#">
+                            <img src="img/icon08.png" alt="부동산연구원아이콘">
+                            <span>부동산연구원</span>
+                        </a>
+                    </div><!-- .item end -->
+                    <div class="item">
+                        <a href="#">
+                            <img src="img/icon09.png" alt="도시정비아이콘">
+                            <span>도시정비</span>
+                        </a>
+                    </div><!-- .item end -->
+                    <div class="item">
+                        <a href="#">
+                            <img src="img/icon10.png" alt="우수부동산서비스사업자인증아이콘">
+                            <span>우수 부동산서비스사업자 인증</span>
+                        </a>
+                    </div><!-- .item end -->
+                </div>
+            </section><!-- .cont_03 end -->
+            <section class="cont_04">
+                <div class="inner">
+                    <div class="info">
+                        <div class="up">
+                            <h3>REB information</h3>
+                            <ul>
+                                <li><a href="#">보상공고</a></li>
+                                <li><a href="#">발간도서(건물신축단가표)</a></li>
+                                <li><a href="#">수의계약</a></li>
+                                <li><a href="#">입찰정보</a></li>
+                                <li><a href="#">실거래조사 소명자료 제출</a></li>
+                            </ul>
+                        </div><!-- .up end -->
+                        <div class="down">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <img src="img/icon21.png" alt="부동산거래질서교란행위신고센턴아이콘">
+                                        <span>부동산거래질서교란행위신고센터</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="img/icon22.png" alt="정보공개아이콘">
+                                        <span>정보공개</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="img/icon23.png" alt="공익신고아이콘">
+                                        <span>부조리 및 부패·공익신고</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="img/icon24.png" alt="인권침해신고시스템아이콘">
+                                        <span>인권침해신고시스템</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="img/icon24.png" alt="고객의소리아이콘">
+                                        <span>고객의 소리</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div><!-- .down end -->
+                    </div><!-- .info end -->
+                    <div class="news">
+                        <div class="swiper mySwiper02">
+                            <div class="swiper-wrapper">
+                              <div class="swiper-slide">
+                                <a href="#">
+                                    <img src="img/banner01.png" alt="국민마이데이터국민참여단">
+                                </a>
+                              </div>
+                              <div class="swiper-slide">
+                                <a href="#">
+                                    <img src="img/banner02.png" alt="2023스마트국토엑스포">
+                                </a>
+                              </div>
+                              <div class="swiper-slide">
+                                <a href="#">
+                                    <img src="img/banner03.png" alt="공동주택가격열람및이의신청">
+                                </a>
+                              </div>
+                              <div class="swiper-slide">
+                                <a href="#">
+                                    <img src="img/banner04.jpg" alt="국민마이데이터국민참여단">
+                                </a>
+                              </div>
+                              <div class="swiper-slide">
+                                <a href="#">
+                                    <img src="img/banner05.png" alt="청년채용비리통합신고센터">
+                                </a>
+                              </div>
+                              <div class="swiper-slide">
+                                <a href="#">
+                                    <img src="img/banner06.gif" alt="2030부산세계박람회">
+                                </a>
+                              </div>
+                              <div class="swiper-slide">
+                                <a href="#">
+                                    <img src="img/banner07.gif" alt="2022공공기관청렴도종합청렴도2등급">
+                                </a>
+                              </div>
+                              <div class="swiper-slide">
+                                <a href="#">
+                                    <img src="img/banner08.gif" alt="기업성장응답센터">
+                                </a>
+                              </div>
+                            </div>
+                        </div>                        
+                        <div class="control">
+                            <div class="swiper-button-prev1">
+                                <img src="img/icons8-긴-화살표-왼쪽 검정.png" alt="왼쪽화살표">
+                            </div>
+                            <div class="swiper-pagination1">
+                            </div>
+                            <div class="swiper-button-next1">
+                                <img src="img/icons8-긴-화살표-오른쪽-30 검정.png" alt="오른쪽화살표">
+                            </div>
+                            <div class="pause">
+                                <img src="img/icons8-중지-30 검정.png" alt="중지버튼">
+                                <img src="img/icons8-놀이-검정.png" alt="재생버튼">
+                            </div>
+                        </div>
+                    </div><!-- .news end -->
+                </div><!-- .inner end -->
+            </section><!-- .cont_04 end -->
+            <section class="cont_05">
+                <div class="inner">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <img src="img/quick01.png" alt="부동산정보앱">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="img/quick02.png" alt="채용비리 신고센터">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="img/quick03.png" alt="주거복지 로드맵">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="img/quick04.png" alt="협력공인중개사">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="img/quick05.png" alt="법원 등기정보광장">
+                            </a>
+                        </li>
+                    </ul>
+                </div><!-- .inner end -->
+            </section><!-- .cont_05 end -->
+            <section class="cont_06">
+                <div class="inner">
+                    <div class="control">
+                        <div class="swiper-button-prev2">
+                            <img src="img/왼쪽꺽새.png" alt="왼쪽화살표">
+                        </div>
+                        <div class="pause">
+                            <img src="img/icons8-중지-30 검정.png" alt="중지버튼">
+                            <img src="img/icons8-놀이-검정.png" alt="재생버튼">
+                        </div>
+                        <div class="swiper-button-next2">
+                            <img src="img/오른쪽꺽새.png" alt="오른쪽화살표">
+                        </div>
+                    </div>
+                    <div class="swiper mySwiper03">
+                        <div class="swiper-wrapper">
+                          <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/6-1.png" alt="등기정보광장">
+                            </a>
+                          </div>
+                          <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/6-2.png" alt="임대차분쟁조정위원회">
+                            </a>
+                          </div>
+                          <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/6-3.gif" alt="청렴포털">
+                            </a>
+                          </div>
+                          <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/6-4.gif" alt="주거복지로드맵">
+                            </a>
+                          </div>
+                          <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/6-5.gif" alt="정부24">
+                            </a>
+                          </div>
+                          <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/6-6.png" alt="종합청렴도평가결과">
+                            </a>
+                          </div>
+                          <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/6-1.png" alt="등기정보광장">
+                            </a>
+                          </div>
+                          <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/6-2.png" alt="임대차분쟁조정위원회">
+                            </a>
+                          </div>
+                          <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/6-3.gif" alt="청렴포털">
+                            </a>
+                          </div>
+                          <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/6-4.gif" alt="주거복지로드맵">
+                            </a>
+                          </div>
+                          <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/6-5.gif" alt="정부24">
+                            </a>
+                          </div>
+                          <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/6-6.png" alt="종합청렴도평가결과">
+                            </a>
+                          </div>
+                        </div>
+                    </div>
+                </div><!-- .inner end -->
+            </section><!-- .cont_06 end -->
+        </main>
+        <footer>
+            <div class="inner">
+                <div class="up">
+                    <ul>
+                        <li><a href="#">개인정보처리방침</a></li>
+                        <li><a href="#">정보공개</a></li>
+                        <li><a href="#">고객의 소리</a></li>
+                        <li><a href="#">공공데이터 이용정책</a></li>
+                        <li><a href="#">저작권정책</a></li>
+                        <li><a href="#">본사 및 지사 안내</a></li>
+                    </ul>
+                    <div class="site">
+                        <ul class="family">
+                            <li>
+                                <a href="#">패밀리사이트</a>
+                                <img src="img/아래화살표.png" alt="화살표아래쪽">
+                            </li>
+                            <ul class="depth_02">
+                                <li><a href="#">부동산연구원</a></li>
+                                <li><a href="#">R-ONE(부동산 통계정보)</a></li>
+                                <li><a href="#">부동산테크</a></li>
+                                <li><a href="#">우수 부동산서비스사업자 인증</a></li>
+                                <li><a href="#">청약홈</a></li>
+                                <li><a href="#">REB파트너스(주)</a></li>
+                            </ul>
+                        </ul>
+                        <ul class="co_op">
+                            <li>
+                                <a href="#">협력사이트</a>
+                                <img src="img/아래화살표.png" alt="화살표아래쪽">
+                            </li>
+                            <ul class="depth_02">
+                                <li><a href="#">감정평가 정보체계</a></li>
+                                <li><a href="#">부동산 공시업무 지원시스템 (공시 담당 공무원)</a></li>
+                            </ul>
+                        </ul>
+                    </div><!-- .site end -->
+                </div><!-- .up end -->
+                <div class="down">
+                    <h1>
+                        <img src="img/fLogo.png" alt="푸터로고">
+                    </h1>
+                    <div class="center">
+                        <p>(우)41068 대구광역시 동구 이노밸리로 291(신서동)</p>
+                        <p>COPYRIGHT ⓒ KOREA REAL ESTATE BOARD. ALL RIGHTS RESERVED.</p>
+                    </div><!-- .center end -->
+                    <div class="right">
+                        <div class="item">
+                            <img src="img/전화.png" alt="한국부동산원콜센터아이콘">
+                            <p>한국부동산원 콜센터 <strong>1644-2828</strong></p>
+                        </div><!-- .item end -->
+                        <div class="item">
+                            <img src="img/팩스.png" alt="청약홈콜센터아이콘">
+                            <p>청약홈 콜센터 <strong>1644-7445</strong></p>
+                        </div><!-- .item end -->
+                        <div class="item">
+                            <img src="img/2023ccmIcon.png" alt="공정거래위원회로고">
+                        </div><!-- .item end -->
+                        <div class="item">
+                            <a href="#">
+                                <img src="img/mark.png" alt="web접근성인증로고">
+                            </a>
+                        </div><!-- .item end -->
+                    </div><!-- .right end -->
+                </div><!-- .down end -->
+            </div><!-- .inner end -->
+        </footer>
+    </div><!-- #wrap end -->
+</body>
+
+</html>
