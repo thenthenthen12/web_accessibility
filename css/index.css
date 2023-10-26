@@ -305,6 +305,7 @@ header .gnb .right_box .menu {
     display: flex;
     align-items: center;
     position: relative;
+    z-index: 10;
 }
 
 #wrap header>.depth_02 .info.on .inner>ul:hover {
@@ -1463,7 +1464,9 @@ footer .inner .up .site .family.on img {
 footer .inner .up .site .co_op.on img {
     transform: rotateX(180deg);
 }
-
+footer .inner .up .site>ul >li >span{
+    cursor: pointer;
+}
 footer .inner .up .site>ul .depth_02 {
     display: block;
     position: absolute;
